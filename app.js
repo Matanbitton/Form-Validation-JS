@@ -7,8 +7,10 @@ const passwordValidateInput = document.getElementById("password2");
 
 const emailPattern = "/S+@S+.S+/";
 const countryPattern = "[a-zA-Z'-'s]*";
+const zipCodePattern = "[0-9]{1,5}";
 
 zipCodeInput.setAttribute("minlength", "4");
+zipCodeInput.setAttribute("pattern", zipCodePattern);
 countryInput.setAttribute("pattern", countryPattern);
 
 form.addEventListener("submit", (e) => {
@@ -30,6 +32,15 @@ emailInput.addEventListener("input", (e) => {
 zipCodeInput.addEventListener("input", (e) => {
   if (zipCodeInput.validity.tooShort) {
     zipCodeInput.setCustomValidity("Zip-code should be logner than 4 numbers");
+    zipCodeInput.reportValidity();
+  } else {
+    zipCodeInput.setCustomValidity("");
+    zipCodeInput.checkValidity();
+  }
+});
+zipCodeInput.addEventListener("input", () => {
+  if (zipCodeInput.validity.patternMismatch) {
+    zipCodeInput.setCustomValidity("Zip-code can only contain numbers");
     zipCodeInput.reportValidity();
   } else {
     zipCodeInput.setCustomValidity("");

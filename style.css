@@ -7,8 +7,10 @@ body {
 form {
   display: flex;
   flex-direction: column;
+  gap: 10px;
   padding: 20px;
-  background-color: antiquewhite;
+  color: rgb(36, 31, 31);
+  background-color: rgb(121, 147, 168);
   border-radius: 1em;
 }
 .container {
@@ -17,14 +19,15 @@ form {
 }
 input {
   border-radius: 0.5em;
+  background-color: rgb(228, 233, 253);
 }
 
 input:invalid {
-  border: 2px solid red;
+  border: 2px solid rgb(233, 120, 120);
 }
 
 input:valid {
-  border: 2px solid green;
+  border: 2px solid rgb(124, 209, 124);
 }
 
 button[type="submit"] {

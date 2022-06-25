@@ -6,6 +6,10 @@ const passwordInput = document.getElementById("password");
 const passwordValidateInput = document.getElementById("password2");
 
 const emailPattern = "/S+@S+.S+/";
+const countryPattern = "[a-zA-Z'-'s]*";
+
+zipCodeInput.setAttribute("minlength", "4");
+countryInput.setAttribute("pattern", countryPattern);
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -20,6 +24,28 @@ emailInput.addEventListener("input", (e) => {
   } else {
     emailInput.setCustomValidity("");
     emailInput.checkValidity();
+  }
+});
+
+zipCodeInput.addEventListener("input", (e) => {
+  if (zipCodeInput.validity.tooShort) {
+    zipCodeInput.setCustomValidity("Zip-code should be logner than 4 numbers");
+    zipCodeInput.reportValidity();
+  } else {
+    zipCodeInput.setCustomValidity("");
+    zipCodeInput.checkValidity();
+  }
+});
+
+countryInput.addEventListener("input", () => {
+  if (countryInput.validity.patternMismatch) {
+    countryInput.setCustomValidity(
+      "Country name can contain only English characters"
+    );
+    countryInput.reportValidity();
+  } else {
+    countryInput.setCustomValidity("");
+    countryInput.checkValidity();
   }
 });
 
